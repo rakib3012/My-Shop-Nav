@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from '../Link/Link';
+ 
+import { AiOutlineMenuUnfold } from "react-icons/ai";
+import { IoCloseCircle } from "react-icons/io5";
 
 function Nav() {
 
@@ -11,21 +14,32 @@ function Nav() {
     { id: 5, name: "Checkout", path: "/checkout" },
   ];
   
+  const [open, setOpen] = useState(false);
+  
+  
   
 
   return (
-    <nav className='text-white mx-2 md:flex justify-between py-3 text-xl'>
+    <nav className='text-cyan-900 px-2 flex justify-between py-3 text-xl bg-amber-500'>
         <div className="logo">
-          <p>Fash<span className='text-amber-500'>ion</span> </p>
+          <p>Fash<span className='text-emerald-600'>ion</span> </p>
         </div>
-        <div className="menu mr-10">
 
-        <ul className='md:flex' >
+
+        <div onClick={()=>setOpen(!open)} className="button md:hidden text-3xl mr-10">
+          {
+            open == true ?  <IoCloseCircle /> :  <AiOutlineMenuUnfold />
+          }
+       
+        </div>
+
+
+        <div className={`menu right-0  bg-amber-500  absolute md:static duration-500 ${open ? ' top-12 ': '-top-68'}   `}>
+        <ul className={`md:flex  px-3 `} >
         {
             routes.map(route =><Link key={route.id} route={route}/>)
           }
-        </ul>
-         
+        </ul> 
         </div>
     </nav>
   )
