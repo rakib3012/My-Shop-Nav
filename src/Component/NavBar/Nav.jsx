@@ -30,7 +30,6 @@ function Nav() {
           {
             open == true ?  <IoCloseCircle /> :  <AiOutlineMenuUnfold />
           }
-       
         </div>
 
 
